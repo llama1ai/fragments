@@ -31,7 +31,7 @@ export default function Home() {
   const [languageModel, setLanguageModel] = useLocalStorage<LLMModelConfig>(
     'languageModel',
     {
-      model: 'claude-3-5-sonnet-latest',
+      model: 'models/gemini-2.5-pro-preview-05-06',
     },
   )
 
@@ -110,9 +110,13 @@ export default function Home() {
   useEffect(() => {
     if (object) {
       setFragment(object)
+      const codeText = Array.isArray(object.code)
+        ? object.code.map((f) => f.file_content).join('\n')
+        : object.code || ''
+
       const content: Message['content'] = [
         { type: 'text', text: object.commentary || '' },
-        { type: 'code', text: object.code || '' },
+        { type: 'code', text: codeText },
       ]
 
       if (!lastMessage || lastMessage.role !== 'assistant') {

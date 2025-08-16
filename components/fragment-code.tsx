@@ -8,7 +8,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 import { Download, FileText } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export function FragmentCode({
   files,
@@ -19,6 +19,14 @@ export function FragmentCode({
   const currentFileContent = files.find(
     (file) => file.name === currentFile,
   )?.content
+
+  useEffect(() => {
+    const fileExists = files.some((file) => file.name === currentFile)
+    if (!fileExists) {
+      const next = files[0]?.name
+      if (next) setCurrentFile(next)
+    }
+  }, [files, currentFile])
 
   function download(filename: string, content: string) {
     const blob = new Blob([content], { type: 'text/plain' })

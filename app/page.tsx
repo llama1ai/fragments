@@ -111,8 +111,12 @@ export default function Home() {
     if (object) {
       setFragment(object)
       const codeText = Array.isArray(object.code)
-        ? object.code.map((f) => f.file_content).join('\n')
-        : object.code || ''
+        ? (object.code as Array<{ file_content?: string }>)
+            .map((f) => f?.file_content ?? '')
+            .join('\n')
+        : typeof object.code === 'string'
+          ? object.code
+          : ''
 
       const content: Message['content'] = [
         { type: 'text', text: object.commentary || '' },

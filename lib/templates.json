@@ -3,21 +3,21 @@
     "name": "Python data analyst",
     "lib": ["python", "jupyter", "numpy", "pandas", "matplotlib", "seaborn", "plotly"],
     "file": "script.py",
-    "instructions": "Runs code as a Jupyter notebook cell. Strong data analysis angle. Can use complex visualisation to explain results.",
+    "instructions": "Runs code as a Jupyter notebook cell. Strong data analysis angle. Can use complex visualisation to explain results. Return code as a single string cell (do not use multiple files).",
     "port": null
   },
   "nextjs-developer": {
     "name": "Next.js developer",
     "lib": ["nextjs@14.2.5", "typescript", "@types/node", "@types/react", "@types/react-dom", "postcss", "tailwindcss", "shadcn"],
     "file": "pages/index.tsx",
-    "instructions": "A Next.js 13+ app that reloads automatically. Using the pages router.",
+    "instructions": "A Next.js 13+ app that reloads automatically (pages router). Create additional files/components as needed. Always include all created files in the response.",
     "port": 3000
   },
   "vue-developer": {
     "name": "Vue.js developer",
     "lib": ["vue@latest", "nuxt@3.13.0", "tailwindcss"],
     "file": "app.vue",
-    "instructions": "A Vue.js 3+ app that reloads automatically. Only when asked specifically for a Vue app.",
+    "instructions": "A Vue.js 3+ app that reloads automatically. Create additional files/components (.vue) as needed. Only when asked specifically for a Vue app. Always include all created files in the response.",
     "port": 3000
   },
   "streamlit-developer": {
@@ -32,7 +32,7 @@
       "plotly"
     ],
     "file": "app.py",
-    "instructions": "A streamlit app that reloads automatically.",
+    "instructions": "A Streamlit app that reloads automatically. You can create additional modules/files and import them. Always include all created files in the response.",
     "port": 8501
   },
   "gradio-developer": {
@@ -47,7 +47,7 @@
       "plotly"
     ],
     "file": "app.py",
-    "instructions": "A gradio app. Gradio Blocks/Interface should be called demo.",
+    "instructions": "A Gradio app. Gradio Blocks/Interface should be called demo. You can create additional modules/files and import them. Always include all created files in the response.",
     "port": 7860
   }
 }

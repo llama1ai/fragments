@@ -116,14 +116,19 @@ export function Preview({
                 <FragmentCode
                   files={
                     Array.isArray(fragment.code)
-                      ? fragment.code.map((file) => ({
-                          name: file.file_path,
-                          content: file.file_content,
-                        }))
+                      ? fragment.code
+                          .map((file) => ({
+                            name: file?.file_path ?? '',
+                            content: file?.file_content ?? '',
+                          }))
+                          .filter((f) => f.name.length > 0)
                       : [
                           {
                             name: fragment.file_path || '',
-                            content: fragment.code,
+                            content:
+                              typeof fragment.code === 'string'
+                                ? fragment.code
+                                : '',
                           },
                         ]
                   }
